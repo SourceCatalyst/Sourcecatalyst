@@ -9,13 +9,12 @@ import {
     Alert,
   } from 'react-native';
   import { useNavigation } from '@react-navigation/native';
-  // import { SearchBar } from 'react-native-paper';
+  
 
   export default function Courses () {
 return (
     <SafeAreaView style={styles.sectionContainer}>
-      {/* <SearchBar/> */}
-    <Text>Home</Text>
+    <Text>Courses</Text>
 
  </SafeAreaView>
 );
