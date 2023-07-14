@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 import Splash from './screens/Splash';
 import Login from './screens/Login';
 import Profile from './screens/Profile';
@@ -14,30 +14,30 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
 
-      <Stack.Screen
-        name="TabNavigation"
-          component={TabNavigation}
-          options={{headerShown: false,}}
-          />
-
         <Stack.Screen
-        name="Splash"
+          name="Splash"
           component={Splash}
-          options={{headerShown: false,}}/>
+          options={{ headerShown: false, }} />
 
         <Stack.Screen
-        name="Login"
+          name="Login"
           component={Login}
-          options={{headerShown: false}}/>
-        
+          options={{ headerShown: false }} />
+
         <Stack.Screen
-        name="Complete Profile"
+          name="Complete Profile"
           component={Profile}
-          options={{headerShadowVisible: false,}}
-          />
+          options={{ headerShadowVisible: false, }}
+        />
+
+        <Stack.Screen
+          name="TabNavigation"
+          component={TabNavigation}
+          options={{ headerShown: false, }}
+        />
 
 
-        </Stack.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

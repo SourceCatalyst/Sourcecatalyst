@@ -23,21 +23,21 @@ import {
       
     }, [])
 
-    function onAuthStateChanged(user) {
-      setUser(user);
-      if (initializing) setInitializing(false);
-    }
+    // function onAuthStateChanged(user) {
+    //   setUser(user);
+    //   if (initializing) setInitializing(false);
+    // }
       
-    checkIfLogedIn = () =>{
+    // checkIfLogedIn = () =>{
       
-      const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        if(subscriber==user)
-        {
-          this.props.navigation.navigate('Home');
-        }else{
-          this.props.navigation.navigate('Login');
-        }
-      }
+    //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    //     if(subscriber==user)
+    //     {
+    //       this.props.navigation.navigate('Home');
+    //     }else{
+    //       this.props.navigation.navigate('Login');
+    //     }
+    //   }
       
      
     return (
