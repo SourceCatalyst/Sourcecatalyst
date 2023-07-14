@@ -48,10 +48,10 @@ import {
             onChangeText={handlePasswordChange}
           />
 
-<TouchableOpacity >
-        <Text onPress={() => {
-              navigation.navigate('Home');
-            }}>Save</Text>
+<TouchableOpacity onPress={() => {
+              navigation.navigate('TabNavigation');
+            }} style={styles.button}>
+        <Text  >CONTINUE</Text>
         
         </TouchableOpacity>
         </View>
@@ -94,4 +94,13 @@ import {
             fontWeight: '600',
             fontSize: 20,
           },
+          button: {
+           
+            borderRadius: 10,
+            backgroundColor: '#F2F2F2',
+            alignItems: "center",
+            justifyContent: "center",
+            marginHorizontal: 90,
+            paddingVertical:10
+          }
         });

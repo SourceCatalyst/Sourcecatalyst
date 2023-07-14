@@ -2,7 +2,6 @@
   "expo": {
     "name": "SC",
     "slug": "SC",
-    "plugins": ["@react-native-google-signin/google-signin"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,6 +23,7 @@
         "backgroundColor": "#ffffff",
         "googleServicesFile": "./google-services.json"
       },
+      "plugins": ["@react-native-google-signin/google-signin"],
       "package": "com.sourcecatalyst.SC"
     },
     "web": {
