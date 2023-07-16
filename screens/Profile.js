@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
 import {
     SafeAreaView,
     StyleSheet,
@@ -9,24 +11,29 @@ import {
     TextInput,
   } from 'react-native';
   import { useNavigation } from '@react-navigation/native';
-  import countryList from 'react-select-country-list'
+import { Image } from 'react-native-elements';
 
   export default function Profile () {
     const navigation = useNavigation();
     const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    function handleUsernameChange(text) {
-        setUsername(text);
+    const [phone, setPhone] = useState('');
+    const [country, setCountry] = useState('');
+    const options = useMemo(() => countryList().getData(), [])
+    function handleUsernameChange(username) {
+        setUsername(username);
       }
     
-      function handlePasswordChange(text) {
-        setPassword(text);
+      function handlePhoneChange(phone) {
+        setPhone(phone);
+      }
+
+      function handleCountryChange(country) {
+        setCountry(country);
       }
     return (
       <SafeAreaView style={styles.sectionContainer}>
         
-        <TextInput  style={styles.inputimg}></TextInput>
+        <Image  style={styles.inputimg} source={require('../assets/web.png')}/>
          <View style={styles.form}>
           <TextInput
             style={styles.input}
@@ -38,14 +45,14 @@ import {
             secureTextEntry={true}
             style={styles.input}
             placeholder="contact number"
-            onChangeText={handlePasswordChange}
+            onChangeText={handlePhoneChange}
           />
 
             <TextInput
             secureTextEntry={true}
             style={styles.input}
             placeholder="country"
-            onChangeText={handlePasswordChange}
+            onChangeText={handleCountryChange}
           />
 
 <TouchableOpacity onPress={() => {
