@@ -18,7 +18,7 @@ export default function Courses() {
 
   const handleSearch = (text) => {
     // Handle search functionality here
-    console.log(text);
+    
   };
 
   const domains = [{ id: '1', title: 'Python', image: require('../assets/python.png') },
@@ -61,10 +61,12 @@ export default function Courses() {
       <View style={styles.program}>
         <Text style={styles.head}>PROGRAM</Text>
         <View style={styles.upskillprogram}>
+          <View style={{flexDirection: 'row'}}>
           <Text style={styles.subhead}>Upskill Program</Text>
           <Text style={styles.days}>15/30 days</Text>
-          <ProgressBar progress={0.6} color="#49B5F2"/>
-        </View>
+          </View>
+          <ProgressBar style={styles.progress} progress={0.5} color="#449237"/>
+          </View>
       </View>
         <FlatList
           style={styles.list}
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     backgroundColor: '#FFFFFF',
-    flexDirection: "row",
+    
   },
   seperate: {
     padding: 5,
@@ -162,6 +164,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 15,
     fontWeight: "500",
-  }
+  },
+  progress:{ 
+      height: 15,
+      width:150,
+      margin: 10,
+      borderRadius: 20,
+      backgroundColor: '#F2F1F7',
+    }
+  
 
 });
