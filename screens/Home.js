@@ -14,11 +14,14 @@ import { SearchBar } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { ProgressBar } from 'react-native-paper';
 
-export default function Courses() {
-
+export default function Home() {
+  const navigation = useNavigation();
+  function onSubmit(){
+    navigation.navigate('Program');
+  }
   const handleSearch = (text) => {
     // Handle search functionality here
-    
+
   };
 
   const domains = [{ id: '1', title: 'Python', image: require('../assets/python.png') },
@@ -42,43 +45,49 @@ export default function Courses() {
   seperate = () => {
     return <View style={styles.seperate} />
   }
-
+  
   return (
     <SafeAreaView style={styles.sectionContainer}>
-      <View style={{flexDirection: 'row'}}>
-      <SearchBar
-        placeholder="search here"
-        containerStyle={styles.searchBarContainer}
-        inputContainerStyle={styles.searchInputContainer}
-        inputStyle={styles.searchInput}
-        onChangeText={handleSearch}
-      />
-      
-      <View style={styles.profileContainer}>
-        <Image source={require('../assets/web.png')} style={styles.profileImage} />
-      </View>
+      <View style={{ flexDirection: 'row' }}>
+        <SearchBar
+          placeholder="search here"
+          containerStyle={styles.searchBarContainer}
+          inputContainerStyle={styles.searchInputContainer}
+          inputStyle={styles.searchInput}
+          onChangeText={handleSearch}
+        />
+
+        <View style={styles.profileContainer}>
+          <Image source={require('../assets/web.png')} style={styles.profileImage} />
+        </View>
       </View>
       <View style={styles.program}>
         <Text style={styles.head}>PROGRAM</Text>
         <View style={styles.upskillprogram}>
-          <View style={{flexDirection: 'row'}}>
-          <Text style={styles.subhead}>Upskill Program</Text>
-          <Text style={styles.days}>15/30 days</Text>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={styles.subhead}>Upskill Program</Text>
+            <Text style={styles.days}>15/30 days</Text>
           </View>
-          <ProgressBar style={styles.progress} progress={0.5} color="#449237"/>
+          <View style={{ flexDirection: 'row' }}>
+            <ProgressBar style={styles.progress} progress={0.5} color="#449237" />
+            <TouchableOpacity onPress={onSubmit}>
+            <Image source={require('../assets/subtract.png')} />
+            </TouchableOpacity>
+            
           </View>
+        </View>
       </View>
-        <FlatList
-          style={styles.list}
-          ListHeaderComponent={headerComponent}
-          numColumns={2}
-          columnWrapperStyle={{flexWrap: 'wrap'}}
-          data={domains}
-          keyExtractor={item => item.title}
-          ItemSeparatorComponent={seperate}
-          renderItem={oneDomain}
-        />
-      
+      <FlatList
+        style={styles.list}
+        ListHeaderComponent={headerComponent}
+        numColumns={2}
+        columnWrapperStyle={{ flexWrap: 'wrap' }}
+        data={domains}
+        keyExtractor={item => item.title}
+        ItemSeparatorComponent={seperate}
+        renderItem={oneDomain}
+      />
+
     </SafeAreaView>
   );
 }
@@ -93,12 +102,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   profileContainer: {
-    margin:8,
-    marginTop:40
+    margin: 8,
+    marginTop: 40
   },
   profileImage: {
     width: 55,
-    height:55,
+    height: 55,
     borderRadius: 20,
   },
   searchBarContainer: {
@@ -124,7 +133,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     backgroundColor: '#FFFFFF',
-    
+
   },
   seperate: {
     padding: 5,
@@ -143,14 +152,14 @@ const styles = StyleSheet.create({
     fontSize: 17,
     padding: 10,
   },
-  subhead:{
+  subhead: {
     fontWeight: "900",
     color: "#525252",
     fontSize: 19,
     paddingRight: 6,
     paddingHorizontal: 10,
   },
-  days:{
+  days: {
     paddingTop: 6,
   },
   item: {
@@ -165,13 +174,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "500",
   },
-  progress:{ 
-      height: 15,
-      width:150,
-      margin: 10,
-      borderRadius: 20,
-      backgroundColor: '#F2F1F7',
-    }
-  
+  progress: {
+    height: 15,
+    width: 280,
+    margin: 10,
+    marginRight: 15,
+    borderRadius: 20,
+    backgroundColor: '#D9D9D9',
+  },
+
 
 });
