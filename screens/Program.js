@@ -19,36 +19,48 @@ import { ProgressBar } from 'react-native-paper';
 export default function Program() {
     const navigation = useNavigation();
     const [isTabOpen, setIsTabOpen] = useState(false);
-  const slideAnimation = useState(new Animated.Value(0))[0];
+    const slideAnimation = useState(new Animated.Value(0))[0];
 
-  const toggleTab = () => {
-    const toValue = isTabOpen ? 0 : 1;
-    const animationDuration = 300;
+    const toggleTab = () => {
+        const toValue = isTabOpen ? 0 : 1;
+        const animationDuration = 300;
 
-    Animated.timing(slideAnimation, {
-      toValue,
-      duration: animationDuration,
-      useNativeDriver: false,
-    }).start();
+        Animated.timing(slideAnimation, {
+            toValue,
+            duration: animationDuration,
+            useNativeDriver: false,
+        }).start();
 
-    setIsTabOpen(!isTabOpen);
-  };
+        setIsTabOpen(!isTabOpen);
+    };
 
-   const tabHeight = slideAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 200], // Adjust the desired maximum height
-  });
+    const tabHeight = slideAnimation.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 200], // Adjust the desired maximum height
+    });
     function onSubmit() {
         navigation.navigate('Home');
+    }
+
+    function handlePressDoc(){
+        navigation.navigate('Documents');
+    }
+
+    function handlePressVid(){
+        navigation.navigate('Videos');
+    }
+
+    function handlePressSubmit(){
+        navigation.navigate('Submissions');
     }
     const handleSearch = (text) => {
         // Handle search functionality here
 
     };
 
-    seperate = () => {
-        return <View style={styles.seperate} />
-    }
+    const separate = () => {
+        return <View style={styles.separate} />;
+    };
 
     return (
         <SafeAreaView style={styles.sectionContainer}>
@@ -68,37 +80,39 @@ export default function Program() {
             <View style={styles.task}>
                 <Text style={styles.day}>Task Title</Text>
                 <TouchableOpacity onPress={toggleTab}>
-                    <Image style={styles.down} source={require('../assets/ellipse.png')}  />
+                    <Image style={styles.down} source={require('../assets/ellipse.png')} />
                 </TouchableOpacity >
-                </View>
-                <Animated.View style={[styles.description, {maxHeight: tabHeight}]}>
-        <Text style={styles.destext}>A task detail typically includes a brief description or summary of the task at hand, along with relevant information such as deadlines, priority level, and any specific instructions or requirements. </Text>
-      </Animated.View>
-                <View style={styles.button}>
-                    <View style={{paddingHorizontal: 10}}><Button style={styles.doc} title='Documents' color={'#AA4EC3'}/></View>
-                    <Button style={styles.vid} title='Videos'/>
-                </View>
-            
+            </View>
+            <Animated.View style={[styles.description, { maxHeight: tabHeight }]}>
+                <Text style={styles.destext}>A task detail typically includes a brief description or summary of the task at hand, along with relevant information such as deadlines, priority level, and any specific instructions or requirements. </Text>
+            </Animated.View>
+            <View style={styles.button}>
+                <View style={{ paddingHorizontal: 10 }}>
+                <Button style={styles.doc} onPress={handlePressDoc} title='Documents' color={'#AA4EC3'} /></View>
+                <Button style={styles.vid} onPress={handlePressVid} title='Videos' />
+            </View>
+
             <View style={styles.submissions}>
                 <Text style={styles.head}>SUBMISSIONS</Text>
-                
-            <View style={styles.tasksub}>
-                <Text style={styles.taskno}>Task II</Text>
-                <View>
-                    <Text style={styles.sub}>SUBMITTED</Text>
+
+                <View style={styles.tasksub}>
+                    <Text style={styles.taskno}>Task II</Text>
+                    <View style={styles.subContainer}>
+                        <Text style={styles.sub}>SUBMITTED</Text>
+                    </View>
                 </View>
+
+                <View style={styles.tasksub}>
+                    <Text style={styles.taskno}>Task I</Text>
+                    <View style={styles.subContainer}>
+                        <Text style={styles.sub}>SUBMITTED</Text>
+                    </View>
                 </View>
-                
-            <View style={styles.tasksub}>
-                <Text style={styles.taskno}>Task I</Text>
-                <View>
-                    <Text style={styles.sub}>SUBMITTED</Text>
-                </View>
-                </View>
-                <View style={styles.button}>
-                    <Button title='READY TO SUBMIT?' color={'#EAA236'}/>
-                </View>
+               
             </View>
+            <View style={styles.button}>
+                    <Button title='READY TO SUBMIT?' color={'#EAA236'} onPress={handlePressSubmit} />
+                </View>
         </SafeAreaView>
     );
 }
@@ -108,77 +122,27 @@ const styles = StyleSheet.create({
     sectionContainer: {
         flex: 1,
         backgroundColor: '#F2F1F7',
-        // alignItems: 'center',
-        justifyContent: 'center',
         padding: 20,
-        flexDirection: 'column',
         paddingTop: 60,
-    },
-    profileContainer: {
-        margin: 8,
-        marginTop: 40
-    },
-    profileImage: {
-        width: 55,
-        height: 55,
-        borderRadius: 20,
-    },
-    searchBarContainer: {
-        backgroundColor: '#F2F1F7',
-        borderBottomColor: 'transparent',
-        borderTopColor: 'transparent',
-        width: 300,
-        paddingTop: 40,
-    },
-    searchInputContainer: {
-        backgroundColor: '#FFFFFF',
-        borderRadius: 10,
-        paddingVertical: 4.5
-    },
-    searchInput: {
-        color: 'black',
-    },
-    program: {
-        paddingBottom: 20,
-        backgroundColor: '#F2F1F7',
-    },
-    upskillprogram: {
-        padding: 20,
-        borderRadius: 10,
-        backgroundColor: '#FFFFFF',
-
-    },
-    seperate: {
-        padding: 5,
-        backgroundColor: '#F2F1F7',
-    },
-    list: {
-        flex: 1,
-        flexDirection: 'row',
-        // paddingHorizontal: 10,
-        flexWrap: 'wrap',
-        // alignItems: 'flex-start'
-    },
-    head: {
-        fontWeight: "900",
-        color: "#525252",
-        fontSize: 17,
-        padding: 10,
     },
     header: {
         flexDirection: 'row',
         backgroundColor: '#FFFFFF',
-        flex: 1,
-        // margin: 10,
-        padding: 10
+        alignItems: 'center',
+        padding: 10,
     },
+    head: {
+        fontWeight: '900',
+        color: '#525252',
+        fontSize: 17,
+        padding: 10,
+        marginTop: 10
+      },
     subhead: {
         fontWeight: "900",
         color: "#525252",
         fontSize: 19,
-        paddingRight: 6,
         paddingHorizontal: 20,
-
     },
     days: {
         flexDirection: "row",
@@ -189,25 +153,11 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     day: {
-        fontWeight: "600",
+        fontWeight: "400",
         fontSize: 19,
-
     },
     taskno: {
         padding: 6,
-        // marginTop: 15
-    },
-    item: {
-        backgroundColor: '#FFFFFF',
-        alignItems: 'center',
-        borderRadius: 10,
-        paddingHorizontal: 40,
-        paddingVertical: 20,
-        marginHorizontal: 5,
-    },
-    title: {
-        fontSize: 15,
-        fontWeight: "500",
     },
     progress: {
         height: 15,
@@ -218,61 +168,62 @@ const styles = StyleSheet.create({
     },
     task: {
         backgroundColor: '#FFFFFF',
-        flex:1.2,
         padding: 10,
         marginTop: 20,
         borderRadius: 10,
-        flexDirection: 'row'
-    },
-    description:{
-        backgroundColor: '#FFFFFF',
-        overflow: 'hidden',
-        borderRadius: 10,
-        paddingHorizontal: 10,
-        justifyContent: 'space-between',
-        
-    },
-    destext:{
-        fontSize: 19,
-    },
-    down:{
-        margin: 5,
-        justifyContent: 'flex-end',
-        
-    },
-    button:{
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        padding: 10,
-    },
-    doc:{
-        borderRadius: 10,
-        marginRight: 5
-    },
-    vid:{
-        borderRadius: 10,
-    },
-    submissions: {
-        flex: 19
-    },
-    sub:{
-        backgroundColor:'#059B2F',
-        borderRadius: 20,
-        color: '#FFFFFF',
-        paddingHorizontal:15,
-        fontWeight: "500",
-        fontSize: 12,
-        paddingVertical: 5,
-        
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
     tasksub: {
         backgroundColor: '#FFFFFF',
-        flex:0.1,
+        flex: 0.12,
         padding: 10,
         marginTop: 10,
         borderRadius: 10,
         flexDirection: 'row'
     },
+    description: {
+        backgroundColor: '#FFFFFF',
+        overflow: 'hidden',
+        borderRadius: 10,
+        paddingHorizontal: 10,
+    },
+    destext: {
+        fontSize: 19,
+    },
+    down: {
+        margin: 5,
+    },
+    button: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        padding: 10,
+      },
+    doc: {
+        borderRadius: 10,
+        marginRight: 5,
+    },
+    vid: {
+        borderRadius: 10,
+    },
+    submissions: {
+        flex: 19,
+    },
+    
+    subContainer: {
+        marginLeft: 'auto',
+    },
+    sub: {
+        backgroundColor: '#059B2F',
+        borderRadius: 20,
+        color: '#FFFFFF',
+        paddingHorizontal: 15,
+        fontWeight: "500",
+        fontSize: 12,
+        paddingVertical: 5,
+    },
+    
 
 
 });
