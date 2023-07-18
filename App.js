@@ -5,7 +5,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import Splash from './screens/Splash';
 import Login from './screens/Login';
 import Profile from './screens/Profile';
+import Program from './screens/Program';
+import Videos from './screens/Videos';
+import Documents from './screens/Documents';
 import TabNavigation from './screens/TabNavigation';
+import Submissions from './screens/Submission';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +40,29 @@ export default function App() {
           options={{ headerShown: false, }}
         />
 
+        <Stack.Screen
+          name="Program"
+          component={Program}
+          options={{ headerShown: false, }}
+        />
+
+<Stack.Screen
+          name="Submissions"
+          component={Submissions}
+          options={{ headerShown: false, }}
+        />
+
+        <Stack.Screen
+          name="Videos"
+          component={Videos}
+          options={{ headerShown: false, }}
+        />
+
+        <Stack.Screen
+          name="Documents"
+          component={Documents}
+          options={{ headerShown: false, }}
+        />
 
       </Stack.Navigator>
     </NavigationContainer>
