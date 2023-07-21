@@ -29,26 +29,6 @@ public class MainActivity extends ReactActivity {
     return "main";
   }
 
-  @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new AsyncStoragePackage(),
-            new RNFirebasePackage(),
-            new RNFirebaseFirestorePackage(),
-            new RNFirebaseLinksPackage(),
-            new RNFirebaseAuthPackage(),
-            new ReanimatedPackage(),
-            new RNGestureHandlerPackage(),
-            new RNScreensPackage(),
-            new SafeAreaContextPackage()
-      );
-    }
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-  super.onCreate(null);
-}
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. Here we use a util class {@link
    * DefaultReactActivityDelegate} which allows you to easily enable Fabric and Concurrent React

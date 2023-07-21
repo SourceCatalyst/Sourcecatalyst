@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "486349858970",
+    "firebase_url": "https://sourcecatalyst-c3bc6-default-rtdb.firebaseio.com",
     "project_id": "sourcecatalyst-c3bc6",
     "storage_bucket": "sourcecatalyst-c3bc6.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "486349858970-9q8v3p9h5bogi2j2lj3bma5u4c6kp5k7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sourcecatalyst.SC",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
         {
           "client_id": "486349858970-eun8487rma6sqnhsqk200d742bjpmkcc.apps.googleusercontent.com",
           "client_type": 1,
@@ -45,6 +54,13 @@
             {
               "client_id": "486349858970-8ofk4tg5d2khfojcv2hibe437p1ba5b8.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "486349858970-csvmee392j1sh1or5rb0tc0icol4bc7k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Source"
+              }
             }
           ]
         }
