@@ -1,32 +1,20 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-// Optionally import the services that you want to use
-// import {...} from "firebase/auth";
-// import {...} from "firebase/database";
-// import {...} from "firebase/firestore";
-// import {...} from "firebase/functions";
-// import {...} from "firebase/storage";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Initialize Firebase
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'api-key',
-  authDomain: 'project-id.firebaseapp.com',
-  databaseURL: 'https://project-id.firebaseio.com',
-  projectId: 'project-id',
-  storageBucket: 'project-id.appspot.com',
-  messagingSenderId: 'sender-id',
-  appId: 'app-id',
-  measurementId: 'G-measurement-id',
+  apiKey: "AIzaSyBdWin1i9Z40vlNR5Ox1aWktQ4TMbfVCWo",
+  authDomain: "sourcecatalyst-c3bc6.firebaseapp.com",
+  projectId: "sourcecatalyst-c3bc6",
+  storageBucket: "sourcecatalyst-c3bc6.appspot.com",
+  messagingSenderId: "486349858970",
+  appId: "1:486349858970:web:4e84b4f835faf2f4675723",
+  databaseURL: "https://sourcecatalyst-c3bc6-default-rtdb.firebaseio.com/",
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth();
-const provider = new GoogleAuthProvider();
-export const signInWithGoogle = () => {
-  signInWithPopup(auth, provider)
-  .then((result) => {
-    console.log(result);    
-  }).catch((error) => {
-    console.log(error);
-  })
-};
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}

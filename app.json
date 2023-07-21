@@ -24,13 +24,13 @@
         "backgroundColor": "#ffffff",
         "googleServicesFile": "./google-services.json"
       },
-      "plugins": ["@react-native-google-signin/google-signin"],
       "package": "com.sourcecatalyst.SC"
     },
     "web": {
       "favicon": "./assets/favicon.png"
       
-    }
+    },
+    "plugins": ["@react-native-google-signin/google-signin"],
 
   }
 }

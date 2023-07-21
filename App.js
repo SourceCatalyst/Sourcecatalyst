@@ -13,9 +13,45 @@ import Submissions from './screens/Submission';
 
 const Stack = createNativeStackNavigator();
 
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { createContext, useContext } from 'react';
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBdWin1i9Z40vlNR5Ox1aWktQ4TMbfVCWo",
+  authDomain: "sourcecatalyst-c3bc6.firebaseapp.com",
+  databaseURL: "https://sourcecatalyst-c3bc6-default-rtdb.firebaseio.com",
+  projectId: "sourcecatalyst-c3bc6",
+  storageBucket: "sourcecatalyst-c3bc6.appspot.com",
+  messagingSenderId: "486349858970",
+  appId: "1:486349858970:web:4e84b4f835faf2f4675723"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Get a list of cities from your database
+async function getUsers(db) {
+  const usersCol = collection(db, 'users');
+  const userSnapshot = await getDocs(usersCol);
+  const userList = userSnapshot.docs.map(doc => doc.data());
+  console.log(userList)
+  return userList;
+}
+
+export const AppContext = createContext();
+
 export default function App() {
+
+  getUsers(db).then((userList) => {
+    console.log(userList)
+  })
   return (
-    <NavigationContainer>
+    <AppContext.Provider value={{app, db}}>
+      <NavigationContainer>
       <Stack.Navigator>
 
         <Stack.Screen
@@ -66,6 +102,7 @@ export default function App() {
 
       </Stack.Navigator>
     </NavigationContainer>
+    </AppContext.Provider>
   );
 }
 
