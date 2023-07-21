@@ -59,21 +59,7 @@ export default function Login() {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.sectionContainer}>
         <View style={styles.box}>
-          <TextInput
-            placeholder="Email"
-            value={email}
-            style={styles.input}
-            onChangeText={setEmail}
-            autoCapitalize="none"
-          />
-          <TextInput
-            placeholder="Password"
-            value={password}
-            style={styles.input}
-            onChangeText={setPassword}
-            secureTextEntry
-          />
-        </View>
+       </View>
         <TouchableOpacity style={styles.button} onPress={handleSignUp}>
           <Image
             style={styles.icon}
